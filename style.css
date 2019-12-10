@@ -1,0 +1,90 @@
+
+
+body{
+  background: #021017;
+  font-family: 'Sulphur Point', sans-serif;
+  color: #ffffff;
+  /*font-family: 'Lacquer', sans-serif;
+  font-family: Helvetica;
+  font-family: 'Unica One', cursive;*/
+}
+
+.wrapper{
+  position:relative;
+}
+
+#headingbox {
+  position:absolute;
+  top: 20;
+  left:0;
+  width: 100%;
+}
+
+#heading {
+  width: 400px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align: center;
+  font-size: 36px;
+  text-transform: capitalize;
+}
+
+#chartdiv {
+  width: 100%;
+  margin-top:10px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #021017;
+}
+
+#draggableTextbox {
+  position: absolute;
+  bottom:0;
+  left:0;
+  width: 20%;
+  height: 40%;
+  overflow:scroll;
+  margin-left: 8%;
+  margin-bottom: 5%;
+  padding: 0.5em;
+}
+
+.textboxInner {
+  width: 90%;
+  height: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ui-widget-content {
+   background: #021017;
+   border: 1px solid #0076b3;
+   color: #ffffff;
+}
+
+
+.p {
+  font-size: 24px;
+}
+
+#textbox a {
+  font-size: 16px;
+  color: #00cb7a;
+  width: 380px;
+}
+
+a:visited {
+  font-size: 24px;
+  color: #00cb7a;
+}
+
+
+#draggableTextbox a {
+  font-size: 16px;
+  color: #00cb7a;
+  width: 380px;
+}
+
+#draggableTextbox h1 {
+  font-size: 24px;
+}
