@@ -360,14 +360,14 @@
             ];
         });
 
-        country = []
         country_color_values = {}
 
         geoPoints = []
         lastFile = "NONE";
 
-
         maxPoints = 100
+
+        updater = 2
 
         function setCountryColor(id, value) {
             country_color_values[id] = value
@@ -388,7 +388,12 @@
             entry = getCountryColor(id)
             entry = {id: entry.id, value: entry.value + 1}
             setCountryColor(id, entry)
-            polygonSeries.data = Object.values(country_color_values)
+
+            if (updater == 0) {
+                polygonSeries.data = Object.values(country_color_values)
+                updater = 5
+            }
+            updater -= 1
         }
 
         function howManyPointsDel(points) {
@@ -403,9 +408,7 @@
             if (geoPoints.length > 0) {
                 geo = geoPoints.pop();
                 imageSeries.addData(geo, howManyPointsDel(imageSeries.data));
-
-                c = country.pop();
-                updateCountry(c)
+                updateCountry(geo.id)
             }
         }
 
@@ -427,6 +430,14 @@
             });
         }
 
+        function shuffle(a) {
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
         function loadEvents(url) {
             requestFile(url, function (data) {
                 var zip = new JSZip();
@@ -438,8 +449,6 @@
                             console.log("Load Events")
                             events.forEach(function (n) {
                                 d = n.split("	");
-                                country.push(d[53])
-
                                 geoPoints.push({
                                     id: typeof (d[53]) == "undefined" ? "" : d[53].substring(0, 2),
                                     "location": d[44],
@@ -450,6 +459,7 @@
                                     value: 50
                                 });
                             });
+                            geoPoints = shuffle(geoPoints)
                             console.log("Load Events Finished")
                         });
                     });
